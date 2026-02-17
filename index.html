@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>AIRFEST 26 — Building Young Minds, For Future Excellence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <body oncontextmenu="return false;">
+
+  <!-- Navbar mengambang: hilang scroll down, muncul scroll up -->
+  <header id="navbar" class="navbar floating">
+    <div class="nav-inner">
+      <a href="#beranda" class="logo">
+        <span class="logo-pixel">AIRFEST</span>
+        <span class="logo-year">26</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#beranda">Beranda</a>
+        <a href="#tentang">Informasi</a>
+        <a href="#galeri">Galeri</a>
+        <a href="#pendaftaran" class="btn-pendaftaran">Pendaftaran</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero: wayframe — 3 kolom maskot PNG, flyover text (hilang saat scroll), rolling strip -->
+  <section id="beranda" class="hero">
+    <div class="stars"></div>
+    <div class="grid-overlay"></div>
+
+    <!-- Tiga kolom maskot PNG: kiri | tengah (lebih lebar) | kanan -->
+    <div class="hero-mascots">
+      <div class="hero-mascot-col hero-mascot-left">
+        <img src="assets/leftmascot.png" alt="Maskot kiri AIRFEST" class="hero-mascot-img hero-float" loading="eager">
+      </div>
+      <div class="hero-mascot-col hero-mascot-center">
+        <div id="hero-center-wrap" class="hero-center-wrap">
+          <img src="assets/mascothero.png" alt="Maskot utama AIRFEST" class="hero-mascot-img hero-mascot-hero hero-float" loading="eager">
+        </div>
+      </div>
+      <div class="hero-mascot-col hero-mascot-right">
+        <img src="assets/rightmascot.png" alt="Maskot kanan AIRFEST" class="hero-mascot-img hero-float" loading="eager">
+      </div>
+    </div>
+
+    <!-- Flyover text: menindih bawah kolom maskot, hilang saat scroll down -->
+    <div id="hero-flyover" class="hero-flyover">
+      <h1 class="hero-title pixel-text">BUILDING YOUNG MINDS<br>FOR FUTURE EXCELLENCE</h1>
+      <p class="hero-sub">Get Ready!</p>
+    </div>
+
+    <!-- Rolling strip: kotak teks "AIRFEST 26" berulang unlimited ke kanan -->
+    <div class="hero-rolling-wrap">
+      <div class="hero-rolling" aria-hidden="true">
+        <div class="hero-rolling-track">
+          <span class="hero-rolling-item">AIRFEST 26</span>
+          <span class="hero-rolling-item">AIRFEST 26</span>
+          <span class="hero-rolling-item">AIRFEST 26</span>
+          <span class="hero-rolling-item">AIRFEST 26</span>
+          <span class="hero-rolling-item">AIRFEST 26</span>
+          <span class="hero-rolling-item">AIRFEST 26</span>
+          <span class="hero-rolling-item">AIRFEST 26</span>
+          <span class="hero-rolling-item">AIRFEST 26</span>
+          <span class="hero-rolling-item">AIRFEST 26</span>
+          <span class="hero-rolling-item">AIRFEST 26</span>
+          <span class="hero-rolling-item">AIRFEST 26</span>
+          <span class="hero-rolling-item">AIRFEST 26</span>
+          <span class="hero-rolling-item">AIRFEST 26</span>
+          <span class="hero-rolling-item">AIRFEST 26</span>
+          <span class="hero-rolling-item">AIRFEST 26</span>
+          <span class="hero-rolling-item">AIRFEST 26</span>
+          <span class="hero-rolling-item">AIRFEST 26</span>
+          <span class="hero-rolling-item">AIRFEST 26</span>
+          <span class="hero-rolling-item">AIRFEST 26</span>
+          <span class="hero-rolling-item">AIRFEST 26</span>
+          <span class="hero-rolling-item">AIRFEST 26</span>
+          <span class="hero-rolling-item">AIRFEST 26</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Apa itu AIRFEST? -->
+  <section id="tentang" class="section section-about">
+    <div class="container">
+      <h2 class="section-title">
+        <span class="pixel-bracket">[</span> Apa itu AIRFEST? <span class="pixel-bracket">]</span>
+      </h2>
+      <div class="about-visual">
+        <div class="pixel-frame"></div>
+      </div>
+      <br>
+      <div class="about-content">
+        <div class="about-hud">
+          <p class="about-text">
+          AIRFEST 26 adalah event yang di selenggarakan oleh <strong> Santri Ibad Ar Rahman (IKSADA) </strong> dalam bentuk kompetisi untuk di ikuti siswa-siswa tingkat <strong>MTS/SMP</strong> dan <strong>SMA/MA/SMK</strong> se-Banten
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filosofi Logo -->
+  <section class="section section-philosophy">
+    <div class="container">
+      <h2 class="section-title">
+        <span class="pixel-bracket">[</span> Filosofi Logo <span class="pixel-bracket">]</span>
+      </h2>
+      <div class="philosophy-content">
+        <!-- Baris atas: dua panel (left top, right top) -->
+        <div class="philosophy-row philosophy-row-top">
+          <div class="philosophy-card philosophy-left-top">
+            <img src="assets/filosofilefttop.png" alt="Filosofi huruf / simbol kiri atas" class="philosophy-img" draggable="false">
+          </div>
+          <div class="philosophy-card philosophy-right-top">
+            <img src="assets/filosofirighttop.png" alt="Filosofi huruf / simbol kanan atas" class="philosophy-img" draggable="false">
+          </div>
+        </div>
+
+        <!-- Baris bawah: tiga panel (left bottom, logo tengah, right bottom) -->
+        <div class="philosophy-row philosophy-row-bottom">
+          <div class="philosophy-card philosophy-left-bottom">
+            <img src="assets/filosofileftbottom.png" alt="Filosofi elemen kiri bawah" class="philosophy-img" draggable="false">
+          </div>
+
+          <div id="philosophy-logo" class="philosophy-logo">
+            <div class="philosophy-logo-inner">
+              <img src="assets/Logo.png" alt="Logo AIRFEST 26" class="philosophy-img philosophy-logo-img" id="philosophy-logo-img" draggable="false">
+            </div>
+          </div>
+
+          <div class="philosophy-card philosophy-right-bottom">
+            <img src="assets/filosofirightbottom.png" alt="Filosofi elemen kanan bawah" class="philosophy-img" draggable="false">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Introduce our Mascot -->
+  <section class="section section-mascot-intro">
+    <div class="container">
+      <div class="mascot-layout">
+        <!-- Banner teks atas -->
+        <div class="mascot-top-banner">
+          <img src="assets/texttop.png" alt="Meet the mission crew" class="mascot-img-top" draggable="false">
+        </div>
+
+        <!-- Panel mascot utama -->
+        <div id="mascot-hero-panel" class="mascot-hero-panel">
+          <div class="mascot-hero-inner">
+            <img src="assets/mascotintro.png" alt="Maskot utama AIRFEST 26" class="mascot-hero-img" id="mascot-hero-img" draggable="false">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline Event: banner atas + garis tengah + event selang-seling kiri/kanan -->
+  <section id="galeri" class="section section-timeline">
+    <div class="container">
+      <h2 class="section-title">
+        <span class="pixel-bracket">[</span> Timeline Event <span class="pixel-bracket">]</span>
+      </h2>
+      <div class="timeline-body">
+        <div class="timeline-line" aria-hidden="true"></div>
+
+        <div class="timeline-item timeline-item--left">
+          <div class="timeline-content">
+            <h3>29 Februari 2026</h3>
+            <p>Peluncuran website AIRFEST 26.</p>
+          </div>
+          <div class="timeline-marker"></div>
+          <div class="timeline-spacer"></div>
+        </div>
+
+        <div class="timeline-item timeline-item--right">
+          <div class="timeline-spacer"></div>
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h3>1 Maret 2026</h3>
+            <p>Pendaftaran peserta batch pertama</p>
+          </div>
+        </div>
+
+        <div class="timeline-item timeline-item--left">
+          <div class="timeline-content">
+            <h3>2 April 2026</h3>
+            <p>Penutupan pendaftaran peserta batch pertama</p>
+          </div>
+          <div class="timeline-marker"></div>
+          <div class="timeline-spacer"></div>
+        </div>
+
+        <div class="timeline-item timeline-item--right">
+          <div class="timeline-spacer"></div>
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h3>4 April 2026</h3>
+            <p>Pendaftaran peserta batch kedua</p>
+          </div>
+        </div>
+
+        <div class="timeline-item timeline-item--left">
+          <div class="timeline-content">
+            <h3>27 April 2026</h3>
+            <p>Penutupan pendaftaran peserta batch kedua</p>
+          </div>
+          <div class="timeline-marker"></div>
+          <div class="timeline-spacer"></div>
+        </div>
+
+        <div class="timeline-item timeline-item--right">
+          <div class="timeline-spacer"></div>
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h3>2 Mei 2026</h3>
+            <p>Technical Meeting</p>
+          </div>
+        </div>
+
+        <div class="timeline-item timeline-item--left">
+          <div class="timeline-content">
+            <h3>8 Mei 2026</h3>
+            <p>Pelaksanaan AIRFEST 26</p>
+          </div>
+          <div class="timeline-marker"></div>
+          <div class="timeline-spacer"></div>
+        </div>
+
+        <div class="timeline-item timeline-item--right">
+          <div class="timeline-spacer"></div>
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h3>9 Mei 2026</h3>
+            <p>Opening Ceremony AIRFEST 26</p>
+          </div>
+        </div>
+
+        <div class="timeline-item timeline-item--left">
+          <div class="timeline-content">
+            <h3>10 Mei 2026</h3>
+            <p>Closing Ceremony AIRFEST 26</p>
+          </div>
+          <div class="timeline-marker"></div>
+          <div class="timeline-spacer"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Countdown: background color + lapisan gambar PNG -->
+  <section class="section section-countdown">
+    <div class="countdown-bg" aria-hidden="true"></div>
+    <div class="container">
+      <h2 class="section-title">
+        <span class="pixel-bracket">[</span> Countdown <span class="pixel-bracket">]</span>
+      </h2>
+      <p class="countdown-label">Getting ready for AIRFEST 26</p>
+      <div id="countdown" class="countdown-boxes">
+        <div class="countdown-item">
+          <span id="days" class="countdown-num">00</span>
+          <span class="countdown-unit">Days</span>
+        </div>
+        <div class="countdown-item">
+          <span id="hours" class="countdown-num">00</span>
+          <span class="countdown-unit">Hours</span>
+        </div>
+        <div class="countdown-item">
+          <span id="minutes" class="countdown-num">00</span>
+          <span class="countdown-unit">Minutes</span>
+        </div>
+        <div class="countdown-item">
+          <span id="seconds" class="countdown-num">00</span>
+          <span class="countdown-unit">Seconds</span>
+        </div>
+      </div>
+      <p class="countdown-date" id="countdown-date">—</p>
+      <br>
+    </div>
+  </section>
+
+  <!-- Footer: wayframe — logo kiri, teks kanan (2 baris), sosial media bawah -->
+  <footer id="pendaftaran" class="footer">
+    <div class="footer-frame">
+      <!-- Bagian atas: logo (logofoot.png) kiri, 2 paragraf teks align right -->
+      <div class="footer-top">
+        <div class="footer-logo-wrap">
+          <img src="assets/logofoot.png" alt="AIRFEST 26" class="footer-logo-img" draggable="false">
+        </div>
+        <div class="footer-text-wrap">
+          <p class="footer-line1">Ardhu Ibad Ar Rahman Festival</p>
+          <p class="footer-line2">EXTERNAL SCHOOL FESTIVAL BY IKATAN SANTRI IBAD AR RAHMAN</p>
+        </div>
+      </div>
+
+      <!-- Bagian bawah: social media align center -->
+      <div class="footer-bottom">
+        <div class="footer-social">
+          <a href="#" target="_blank" rel="noopener" aria-label="Instagram" class="footer-link footer-link-ig">INSTAGRAM <span class="footer-link-arrow">↗</span></a>
+          <a href="#" target="_blank" rel="noopener" aria-label="TikTok" class="footer-link footer-link-tt">TIKTOK <span class="footer-link-arrow">↗</span></a>
+          <a href="#" target="_blank" rel="noopener" aria-label="YouTube" class="footer-link footer-link-yt">YOUTUBE <span class="footer-link-arrow">↗</span></a>
+          <a href="#" target="_blank" rel="noopener" aria-label="Threads" class="footer-link footer-link-th">THREADS <span class="footer-link-arrow">↗</span></a>
+          <a href="#" target="_blank" rel="noopener" aria-label="Telegram" class="footer-link footer-link-tg">TELEGRAM <span class="footer-link-arrow">↗</span></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
