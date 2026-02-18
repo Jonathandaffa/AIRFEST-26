@@ -177,6 +177,12 @@ body {
   text-shadow: 0 0 12px rgba(0, 245, 255, 0.4);
 }
 
+.nav-links a.nav-active {
+  color: var(--neon-cyan);
+  text-shadow: 0 0 12px rgba(0, 245, 255, 0.5);
+}
+
+
 .btn-pendaftaran {
   padding: 0.5rem 1.25rem !important;
   background: linear-gradient(135deg, var(--neon-magenta), var(--neon-purple));
@@ -985,6 +991,12 @@ body {
   }
 }
 
+/* Nav link aktif (halaman saat ini) */
+.nav-links a.nav-active {
+  color: var(--neon-cyan);
+  text-shadow: 0 0 12px rgba(0, 245, 255, 0.5);
+}
+
 /* Responsive navbar */
 @media (max-width: 768px) {
   .nav-links {
@@ -995,5 +1007,191 @@ body {
   }
   .btn-pendaftaran {
     padding: 0.4rem 0.9rem !important;
+  }
+}
+
+/* ========== Halaman Informasi + HUD Frame (100% sesuai hudframeinfo.png) ========== */
+.info-page {
+  position: relative;
+  min-height: 100vh;
+  padding-top: 5rem;
+  z-index: 1;
+}
+
+.info-section .container {
+  max-width: 680px;
+}
+
+.info-page-title {
+  margin-bottom: 2.5rem;
+}
+
+.info-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* ----- Kotak HUD Frame: bentuk angular, border cyan, glow + aliran ----- */
+.info-hud-card {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 0;
+  overflow: visible;
+}
+
+/* Wrapper untuk border cyan + aliran abstrak berjalan */
+.info-hud-border-wrap {
+  position: absolute;
+  inset: -3px;
+  z-index: 0;
+  background: rgba(0, 245, 255, 0.2);
+  box-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
+  clip-path: polygon(
+    0 14px, 14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px
+  );
+  overflow: hidden;
+}
+
+/* Aliran cyan yang berjalan di border (rotating gradient) */
+.info-hud-border-flow {
+  position: absolute;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  left: -50%;
+  top: -50%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 60deg,
+    var(--neon-cyan) 120deg,
+    rgba(0, 245, 255, 0.6) 180deg,
+    transparent 240deg,
+    transparent 300deg
+  );
+  animation: infoBorderFlowRotate 2.5s linear infinite;
+  pointer-events: none;
+}
+
+.info-hud-card:hover .info-hud-border-wrap {
+  box-shadow: 0 0 35px rgba(0, 245, 255, 0.6), 0 0 60px rgba(0, 245, 255, 0.25);
+  background: rgba(0, 245, 255, 0.35);
+}
+
+@keyframes infoBorderFlowRotate {
+  to { transform: rotate(360deg); }
+}
+
+/* Inner content: bentuk angular sama, margin agar border wrap terlihat 3px */
+.info-hud-inner {
+  position: relative;
+  z-index: 1;
+  margin: 3px;
+  background: #0a0e1a;
+  clip-path: polygon(
+    0 14px, 14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px
+  );
+  overflow: hidden;
+}
+
+/* Top: gambar artikel (banner) */
+.info-card-banner {
+  width: 100%;
+  aspect-ratio: 600 / 280;
+  background: rgba(30, 40, 60, 0.8);
+  border-bottom: 1px solid rgba(0, 245, 255, 0.15);
+}
+
+.info-card-banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Bottom strip: logo box (1:1) + judul & subjudul */
+.info-card-footer {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  background: rgba(8, 12, 24, 0.95);
+  min-height: 100px;
+}
+
+/* Kotak 1:1 — logo atas, tulisan bawah */
+.info-card-logo-box {
+  width: 88px;
+  height: 88px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  background: rgba(20, 30, 50, 0.9);
+  border: 1px solid rgba(0, 245, 255, 0.35);
+  border-radius: 8px;
+  padding: 0.4rem;
+}
+
+.info-card-logo {
+  width: 40px;
+  height: auto;
+  max-height: 44px;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.info-card-logo-label {
+  font-family: var(--font-display);
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #fff;
+}
+
+/* Judul & subjudul — 2 baris, align left */
+.info-card-text {
+  text-align: left;
+  min-width: 0;
+}
+
+.info-card-title {
+  font-family: var(--font-display);
+  font-size: clamp(0.85rem, 1.8vw, 1.05rem);
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 0.25rem 0;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.info-card-subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .info-card-footer {
+    grid-template-columns: 1fr;
+  }
+  .info-card-logo-box {
+    margin: 0 auto;
   }
 }
