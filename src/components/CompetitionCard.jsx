@@ -90,9 +90,9 @@ export default function CompetitionCard({
               />
             ) : (
               <div className="comp-card-poster-placeholder">
-                A4 png image
+                Poster Lomba
                 <br />
-                aspect ratio
+                aspek rasio tetap
               </div>
             )}
           </div>
