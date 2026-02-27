@@ -1,0 +1,115 @@
+/* ============================================
+   Navbar Styles — Floating glassmorphism bar
+   ============================================ */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1rem 2rem;
+}
+
+/* Inner container — glassmorphism effect */
+.navbar.floating .nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.75rem 1.5rem;
+  background: rgba(10, 10, 18, 0.85);
+  border: 1px solid rgba(0, 245, 255, 0.2);
+  border-radius: 12px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 24px rgba(0, 245, 255, 0.08);
+}
+
+/* Logo styling */
+.logo {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  text-decoration: none;
+  color: var(--text-light);
+}
+
+.logo .logo-pixel {
+  font-family: var(--font-pixel);
+  font-size: clamp(0.65rem, 2vw, 0.85rem);
+  color: var(--neon-cyan);
+  text-shadow: 0 0 12px rgba(0, 245, 255, 0.5);
+}
+
+.logo-year {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+  color: var(--neon-magenta);
+  letter-spacing: 0.1em;
+}
+
+/* Nav links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: color 0.2s, text-shadow 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--neon-cyan);
+  text-shadow: 0 0 12px rgba(0, 245, 255, 0.4);
+}
+
+.nav-links a.nav-active {
+  color: var(--neon-cyan);
+  text-shadow: 0 0 12px rgba(0, 245, 255, 0.5);
+}
+
+/* Button Pendaftaran */
+.btn-pendaftaran {
+  padding: 0.5rem 1.25rem !important;
+  background: linear-gradient(135deg, var(--neon-magenta), var(--neon-purple));
+  color: #fff !important;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 0, 170, 0.5);
+  box-shadow: 0 0 20px rgba(255, 0, 170, 0.3);
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  transition: box-shadow 0.3s ease;
+}
+
+.btn-pendaftaran:hover {
+  box-shadow: 0 0 28px rgba(255, 0, 170, 0.5), 0 0 60px rgba(255, 0, 170, 0.2);
+  text-shadow: none !important;
+}
+
+/* Active state when registration route is selected */
+.nav-links a.nav-active .btn-pendaftaran {
+  box-shadow: 0 0 32px rgba(255, 0, 170, 0.7);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-links {
+    gap: 0.75rem;
+  }
+  .nav-links a {
+    font-size: 0.7rem;
+  }
+  .btn-pendaftaran {
+    padding: 0.4rem 0.9rem !important;
+  }
+}

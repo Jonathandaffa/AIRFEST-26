@@ -1,0 +1,45 @@
+/* ============================================
+   DraggableEmoji Styles
+   ============================================ */
+.draggable-emoji {
+  position: fixed;
+  font-size: 3rem;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: auto;
+  z-index: 50;
+  text-shadow: 0 0 20px rgba(0, 245, 255, 0.4);
+  filter: drop-shadow(0 0 10px rgba(0, 245, 255, 0.3));
+}
+
+.emoji-char {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.draggable-emoji:hover .emoji-char {
+  transform: scale(1.15);
+}
+
+.draggable-emoji-left {
+  left: 2rem;
+}
+
+.draggable-emoji-right {
+  right: 2rem;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .draggable-emoji {
+    font-size: 2rem;
+  }
+
+  .draggable-emoji-left {
+    left: 1rem;
+  }
+
+  .draggable-emoji-right {
+    right: 1rem;
+  }
+}

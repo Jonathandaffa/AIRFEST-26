@@ -1,0 +1,95 @@
+/* ============================================
+   Hero Styles — 3 kolom maskot + flyover text
+   ============================================ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  z-index: 1;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Grid 3 kolom: kiri | tengah (lebih lebar) | kanan */
+.hero-mascots {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr 1fr;
+  gap: 0;
+  flex: 1;
+  min-height: 55vh;
+  padding: 2rem 1rem 0;
+  align-items: flex-end;
+  user-select: none;
+}
+
+.hero-mascot-col {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: relative;
+  min-height: 180px;
+  user-select: none;
+}
+
+.hero-mascot-img {
+  max-width: 100%;
+  height: auto;
+  max-height: 50vh;
+  min-height: 120px;
+  object-fit: contain;
+  object-position: bottom;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+
+/* Efek mengambang */
+.hero-float {
+  animation: heroMascotFloat 4s ease-in-out infinite;
+}
+
+.hero-mascot-left .hero-float { animation-delay: 0s; }
+.hero-mascot-center .hero-float { animation-delay: 0.3s; }
+.hero-mascot-right .hero-float { animation-delay: 0.6s; }
+
+@keyframes heroMascotFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+/* Flyover text */
+.hero-flyover {
+  position: relative;
+  z-index: 2;
+  margin-top: -4rem;
+  padding: 1.5rem 2rem 2rem;
+  text-align: center;
+}
+
+.hero-title {
+  font-family: var(--font-mokoto);
+  font-size: clamp(1.5rem, 4vw, 3.5rem);
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 0 24px rgba(0, 245, 255, 0.5), 0 0 48px rgba(139, 92, 246, 0.3);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.2em;
+  line-height: 1.2;
+}
+
+.hero-title-scatter {
+  font-family: var(--font-mokoto);
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+}
+
+.hero-sub {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--neon-magenta);
+  letter-spacing: 0.2em;
+}

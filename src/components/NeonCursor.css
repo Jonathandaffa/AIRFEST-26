@@ -1,0 +1,82 @@
+/* ============================================
+   NeonCursor Styles
+   ============================================ */
+
+/* Inner dot — titik kecil cyan solid */
+.neon-cursor-inner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--neon-cyan);
+  box-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan);
+  pointer-events: none;
+  z-index: 99999;
+  mix-blend-mode: screen;
+}
+
+/* Outer ring — lingkaran besar transparan dengan border neon */
+.neon-cursor-outer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 245, 255, 0.5);
+  box-shadow: 0 0 15px rgba(0, 245, 255, 0.3), inset 0 0 15px rgba(0, 245, 255, 0.1);
+  pointer-events: none;
+  z-index: 99998;
+  mix-blend-mode: screen;
+}
+
+/* Trail dot (glitchy dotted tail) */
+.neon-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, var(--neon-cyan), rgba(0,245,255,0.6));
+  box-shadow: 0 0 8px rgba(0,245,255,0.25);
+  pointer-events: none;
+  z-index: 99997;
+  mix-blend-mode: screen;
+  transform-origin: center;
+  will-change: transform, opacity;
+}
+
+/* Interactive state: enlarge outer ring and tint */
+.neon-cursor-outer.interactive {
+  transform: scale(1.15);
+  border-color: rgba(255, 0, 170, 0.9);
+  box-shadow: 0 0 22px rgba(255, 0, 170, 0.45), inset 0 0 18px rgba(255, 0, 170, 0.12);
+}
+.neon-cursor-inner.interactive {
+  width: 10px;
+  height: 10px;
+  background: linear-gradient(180deg, var(--neon-magenta), var(--neon-cyan));
+  box-shadow: 0 0 14px rgba(255,0,170,0.5), 0 0 26px rgba(0,245,255,0.35);
+}
+
+/* Sembunyikan di mobile */
+@media (max-width: 768px) {
+  .neon-cursor-inner,
+  .neon-cursor-outer {
+    display: none;
+  }
+}
+
+/* small glitch wobble for trail */
+@keyframes dotGlitch {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-3px); }
+  40% { transform: translateX(2px); }
+  60% { transform: translateX(-2px); }
+  80% { transform: translateX(1px); }
+  100% { transform: translateX(0); }
+}
+.neon-cursor-dot { animation: dotGlitch 1.6s ease-in-out infinite; }

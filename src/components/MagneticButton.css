@@ -1,0 +1,11 @@
+/* ============================================
+   MagneticButton Styles
+   ============================================ */
+.magnetic-btn {
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+  border: none;
+  background: none;
+  font: inherit;
+}

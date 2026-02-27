@@ -1,0 +1,99 @@
+/* ============================================
+   AIRFEST 26 — Halaman Galeri (navbar + footer + feed & modal)
+   Converted for React
+   ============================================ */
+
+:root {
+  --space-dark: #0a0a12;
+  --neon-cyan: #00f5ff;
+  --neon-magenta: #ff00aa;
+  --neon-purple: #8b5cf6;
+  --text-light: #e0e0ff;
+  --text-dim: #8892b0;
+  --font-display: 'Orbitron', sans-serif;
+  --font-pixel: 'Press Start 2P', cursive;
+  --font-mono: 'Share Tech Mono', monospace;
+  --font-mokoto: 'Mokoto', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-mono);
+  background: var(--space-dark);
+  color: var(--text-light);
+  overflow-x: hidden;
+  line-height: 1.6;
+  touch-action: pan-y;
+}
+
+/* Stars / Grid */
+.stars { position: fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0; background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0,245,255,0.08) 0%, transparent 50%), radial-gradient(ellipse 60% 40% at 80% 60%, rgba(255,0,170,0.06) 0%, transparent 40%); }
+
+.grid-overlay { position: fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0; background-image: linear-gradient(rgba(0,245,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,245,255,0.03) 1px, transparent 1px); background-size: 24px 24px; }
+
+/* Navbar, footer and common styles follow same theme as other pages */
+.section { position: relative; z-index:1; padding: 4rem 2rem; }
+.container { max-width: 1100px; margin: 0 auto; }
+.section-title { font-family: var(--font-display); font-size: clamp(1.1rem, 3vw, 1.5rem); font-weight:700; text-align:center; margin-bottom:2rem; color:var(--text-light); }
+.pixel-bracket { color: var(--neon-cyan); font-family: var(--font-pixel); font-size: 0.8em; }
+
+/* Gallery specific */
+.gallery-page { position: relative; min-height: 100vh; padding-top: 5rem; z-index: 1; }
+.gallery-title { margin-bottom: 1.5rem; }
+.gallery-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.gallery-item { position: relative; padding: 0; border: none; background: transparent; cursor: pointer; overflow: hidden; border-radius: 10px; }
+.gallery-img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; transition: transform 0.3s ease, filter 0.3s ease; user-select: none; -webkit-user-drag: none; }
+.gallery-item::after { content: ''; position: absolute; inset: 0; border: 2px solid transparent; border-radius: 10px; transition: border-color 0.3s ease, box-shadow 0.3s ease; }
+.gallery-item:hover .gallery-img { transform: scale(1.03); filter: brightness(1.05); }
+.gallery-item:hover::after { border-color: rgba(0,245,255,0.7); box-shadow: 0 0 20px rgba(0,245,255,0.45); }
+
+@media (max-width: 900px) { .gallery-grid { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+@media (max-width: 640px) { .gallery-grid { grid-template-columns: 1fr; } }
+
+/* Modal detail */
+.gallery-modal { position: fixed; inset: 0; z-index: 1200; display: none; }
+.gallery-modal.open { display: block; }
+.gallery-modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.75); }
+.gallery-modal-dialog { position: relative; width: min(1000px, 94vw); margin: 4rem auto; background: #05060b; border-radius: 14px; border: 1px solid rgba(0,245,255,0.35); box-shadow: 0 0 30px rgba(0,245,255,0.35), 0 0 80px rgba(0,0,0,0.9); display: grid; grid-template-columns: minmax(0,1.3fr) minmax(0,1fr); overflow: hidden; }
+.gallery-modal-close { position: absolute; top:0.5rem; right:0.75rem; border:none; background:transparent; color:#fff; font-size:1.5rem; cursor:pointer; z-index:1; }
+.gallery-modal-media { background:#050911; border-right:1px solid rgba(0,245,255,0.1); display:flex; align-items:center; justify-content:center; }
+.gallery-modal-img { width:100%; height:100%; max-height:80vh; object-fit:contain; background:#000; }
+.gallery-modal-side { display:flex; flex-direction:column; padding:1rem 1.25rem; gap:0.75rem; }
+.gallery-modal-header { display:flex; align-items:baseline; justify-content:space-between; gap:1rem; padding-bottom:0.5rem; border-bottom:1px solid rgba(0,245,255,0.18); }
+.gallery-modal-title { font-family:var(--font-display); font-size:1rem; color:var(--neon-cyan); }
+.gallery-modal-date { font-family:var(--font-mono); font-size:0.7rem; color:var(--text-dim); }
+.gallery-modal-caption { font-size:0.8rem; color:var(--text-light); }
+.gallery-modal-reactions { display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+.gallery-like-btn { border:1px solid rgba(255,0,170,0.5); background:transparent; color:#fff; border-radius:999px; padding:0.35rem 0.9rem; display:inline-flex; align-items:center; gap:0.35rem; cursor:pointer; transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease; }
+.gallery-like-btn .like-icon { color:#ff4b9a; }
+.gallery-like-btn[aria-pressed="true"] { background: rgba(255,0,170,0.15); box-shadow: 0 0 16px rgba(255,0,170,0.4); transform: translateY(-1px); }
+.gallery-like-count { font-family:var(--font-mono); font-size:0.8rem; color:var(--text-dim); }
+.gallery-comments { flex:1; min-height:0; max-height:40vh; overflow-y:auto; padding-right:0.25rem; display:flex; flex-direction:column; gap:0.5rem; }
+.gallery-comment { font-size:0.8rem; background: rgba(10,14,24,0.9); border-radius:8px; padding:0.35rem 0.5rem; border:1px solid rgba(0,245,255,0.1); }
+.gallery-comment-header { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:0.1rem; }
+.gallery-comment-name { font-family:var(--font-display); font-size:0.75rem; color:var(--neon-cyan); }
+.gallery-comment-time { font-family:var(--font-mono); font-size:0.65rem; color:var(--text-dim); }
+.gallery-comment-text { font-size:0.8rem; color:var(--text-light); }
+.gallery-comment-image { margin-top:0.25rem; max-width:100%; border-radius:6px; }
+.gallery-comment-form { margin-top:0.5rem; padding-top:0.5rem; border-top:1px solid rgba(0,245,255,0.18); display:flex; flex-direction:column; gap:0.5rem; }
+.gallery-comment-inputs { display:flex; gap:0.5rem; }
+.gallery-comment-inputs textarea { flex:1; resize:none; font-family:var(--font-mono); font-size:0.75rem; padding:0.4rem 0.45rem; background: rgba(10,14,24,0.95); border:1px solid rgba(0,245,255,0.3); border-radius:6px; color:#fff; }
+.gallery-comment-inputs textarea:focus { outline:none; border-color: rgba(0,245,255,0.7); box-shadow: 0 0 12px rgba(0,245,255,0.35); }
+.gallery-comment-file-label { display:flex; align-items:stretch; }
+.gallery-comment-file-btn { display:inline-flex; align-items:center; justify-content:center; padding:0.4rem 0.6rem; font-family:var(--font-display); font-size:0.7rem; border-radius:6px; border:1px solid rgba(0,245,255,0.5); color:var(--neon-cyan); background: rgba(10,14,24,0.95); cursor:pointer; }
+.gallery-comment-submit { align-self:flex-end; padding:0.4rem 0.9rem; font-family:var(--font-display); font-size:0.75rem; border-radius:999px; border:1px solid rgba(0,245,255,0.7); color:#fff; background: rgba(0,245,255,0.15); cursor:pointer; transition: background 0.2s ease, box-shadow 0.2s ease; }
+.gallery-comment-submit:hover { background: rgba(0,245,255,0.3); box-shadow: 0 0 16px rgba(0,245,255,0.45); }
+
+@media (max-width: 900px) {
+  .gallery-modal-dialog { grid-template-columns: 1fr; max-height:90vh; }
+  .gallery-modal-media { border-right:none; border-bottom:1px solid rgba(0,245,255,0.1); max-height:50vh; }
+}

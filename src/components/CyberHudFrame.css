@@ -1,0 +1,129 @@
+/* ============================================
+   CyberHudFrame Styles
+   ============================================ */
+.cyber-hud-frame {
+  position: relative;
+  padding: 1.5rem 2rem;
+  background: rgba(10, 10, 24, 0.75);
+  border: 1px solid rgba(0, 245, 255, 0.4);
+  box-shadow:
+    0 0 20px rgba(0, 245, 255, 0.15),
+    0 0 40px rgba(0, 245, 255, 0.08),
+    inset 0 0 60px rgba(0, 245, 255, 0.03);
+  clip-path: polygon(
+    0 12px, 12px 0, 100% 0, 100% calc(100% - 12px),
+    calc(100% - 12px) 100%, 0 100%, 0 12px
+  );
+  overflow: visible;
+}
+
+/* Scan-line yang bergerak dari atas ke bawah repeat */
+.cyber-hud-scanline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 245, 255, 0.03) 50%,
+    transparent 100%
+  );
+  background-size: 100% 4px;
+  animation: scanlineMove 8s linear infinite;
+  opacity: 0.5;
+}
+
+@keyframes scanlineMove {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+/* Corner brackets neon */
+.cyber-hud-corner {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-color: var(--neon-cyan);
+  border-style: solid;
+  border-width: 0;
+  opacity: 0.9;
+  z-index: 3;
+}
+
+.cyber-hud-corner-tl {
+  top: 8px;
+  left: 8px;
+  border-top-width: 2px;
+  border-left-width: 2px;
+  box-shadow: 0 0 10px rgba(0, 245, 255, 0.6);
+}
+
+.cyber-hud-corner-tr {
+  top: 8px;
+  right: 8px;
+  border-top-width: 2px;
+  border-right-width: 2px;
+  box-shadow: 0 0 10px rgba(0, 245, 255, 0.6);
+}
+
+.cyber-hud-corner-bl {
+  bottom: 8px;
+  left: 8px;
+  border-bottom-width: 2px;
+  border-left-width: 2px;
+  box-shadow: 0 0 10px rgba(0, 245, 255, 0.6);
+}
+
+.cyber-hud-corner-br {
+  bottom: 8px;
+  right: 8px;
+  border-bottom-width: 2px;
+  border-right-width: 2px;
+  box-shadow: 0 0 10px rgba(0, 245, 255, 0.6);
+}
+
+.cyber-hud-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Glitch effect — colored shadow overlay */
+.cyber-hud-glitch {
+  box-shadow:
+    0 0 30px rgba(0, 245, 255, 0.3),
+    0 0 60px rgba(0, 245, 255, 0.15),
+    inset 0 0 80px rgba(0, 245, 255, 0.05),
+    8px 0 15px rgba(255, 0, 170, 0.2),
+    -8px 0 15px rgba(0, 200, 255, 0.2);
+}
+
+.cyber-hud-glitch-shadow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: 0;
+  opacity: 0.4;
+  animation: glitchFlicker 0.15s infinite;
+  z-index: 2;
+}
+
+.cyber-hud-glitch-1 {
+  background: rgba(255, 0, 170, 0.1);
+  clip-path: polygon(0 0, 100% 0, 100% 50%, 0 48%);
+  animation-delay: 0s;
+}
+
+.cyber-hud-glitch-2 {
+  background: rgba(0, 200, 255, 0.1);
+  clip-path: polygon(0 50%, 100% 52%, 100% 100%, 0 100%);
+  animation-delay: 0.075s;
+}
+
+@keyframes glitchFlicker {
+  0%, 100% { transform: translateX(0) scaleX(1); }
+  50% { transform: translateX(2px) scaleX(0.98); }
+}

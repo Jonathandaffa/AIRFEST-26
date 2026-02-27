@@ -1,0 +1,135 @@
+/* ============================================
+   TimelineSection Styles
+   ============================================ */
+.section-timeline {
+  background: linear-gradient(180deg, transparent, rgba(0, 102, 255, 0.05), transparent);
+}
+
+/* Timeline body: garis tengah + events */
+.timeline-body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Garis vertikal tengah */
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, transparent, var(--neon-cyan), transparent);
+  box-shadow: 0 0 14px rgba(0, 245, 255, 0.5);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+/* Item grid: 3 kolom (content | marker | spacer) */
+.timeline-item {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+  min-height: 4rem;
+}
+
+/* Posisi content berdasarkan sisi */
+.timeline-item--left .timeline-content { grid-column: 1; text-align: right; }
+.timeline-item--left .timeline-marker { grid-column: 2; }
+.timeline-item--left .timeline-spacer { grid-column: 3; }
+
+.timeline-item--right .timeline-spacer { grid-column: 1; }
+.timeline-item--right .timeline-marker { grid-column: 2; }
+.timeline-item--right .timeline-content { grid-column: 3; text-align: left; }
+
+.timeline-spacer { min-width: 0; }
+
+/* Marker dot — dengan ping animation */
+.timeline-marker {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--space-dark);
+  border: 2px solid var(--neon-cyan);
+  box-shadow: 0 0 12px rgba(0, 245, 255, 0.5);
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+/* Ping effect — expanding ring */
+.timeline-marker-ping {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid var(--neon-cyan);
+  opacity: 0;
+  animation: markerPing 2s ease-out infinite;
+}
+
+@keyframes markerPing {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+/* Content card */
+.timeline-content {
+  padding: 1rem 1.25rem;
+  background: rgba(18, 18, 42, 0.6);
+  border: 1px solid rgba(0, 245, 255, 0.25);
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 245, 255, 0.08);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-content:hover {
+  border-color: rgba(0, 245, 255, 0.5);
+  box-shadow: 0 0 30px rgba(0, 245, 255, 0.2);
+}
+
+.timeline-content h3 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--neon-cyan);
+  margin-bottom: 0.35rem;
+}
+
+.timeline-content p {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  margin: 0;
+}
+
+/* Responsive: single column */
+@media (max-width: 768px) {
+  .timeline-line {
+    left: 1rem;
+    transform: none;
+  }
+
+  .timeline-item {
+    grid-template-columns: auto 1fr;
+    gap: 0.75rem;
+    padding-left: 0;
+  }
+
+  .timeline-item--left .timeline-content,
+  .timeline-item--right .timeline-content {
+    grid-column: 2;
+    text-align: left;
+  }
+
+  .timeline-item--left .timeline-marker,
+  .timeline-item--right .timeline-marker {
+    grid-column: 1;
+  }
+
+  .timeline-item--left .timeline-spacer,
+  .timeline-item--right .timeline-spacer {
+    display: none;
+  }
+}

@@ -1,0 +1,68 @@
+/* ============================================
+   Global Reset & CSS Variables
+   Tema: Space Galaxy × Cyberpunk × 8-bit
+   ============================================ */
+
+:root {
+  --space-dark: #0a0a12;
+  --space-deep: #0d0d1a;
+  --space-mid: #12122a;
+  --neon-cyan: #00f5ff;
+  --neon-magenta: #ff00aa;
+  --neon-blue: #0066ff;
+  --neon-purple: #8b5cf6;
+  --pixel-green: #00ff88;
+  --text-light: #e0e0ff;
+  --text-dim: #8892b0;
+  --font-display: 'Orbitron', sans-serif;
+  --font-mokoto: 'Mokoto';
+  --font-pixel: 'Press Start 2P', cursive;
+  --font-mono: 'Share Tech Mono', monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-mono);
+  background: var(--space-dark);
+  color: var(--text-light);
+  overflow-x: hidden;
+  line-height: 1.6;
+  touch-action: pan-y;
+  cursor: none;
+}
+
+/* Sembunyikan default cursor untuk custom neon cursor */
+a, button, [role="button"] {
+  cursor: none;
+}
+
+::selection {
+  background: rgba(0, 245, 255, 0.3);
+  color: #fff;
+}
+
+/* Scrollbar cyberpunk */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--space-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--neon-cyan), var(--neon-purple));
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--neon-magenta), var(--neon-cyan));
+}

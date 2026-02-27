@@ -1,0 +1,59 @@
+/* ============================================
+   GlitchText Styles — Efek glitch cyberpunk
+   ============================================ */
+.glitch-text {
+  position: relative;
+  display: inline-block;
+}
+
+/* Layer glitch pseudo-elements */
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.glitch-text::before {
+  color: var(--neon-cyan);
+  z-index: -1;
+}
+
+.glitch-text::after {
+  color: var(--neon-magenta);
+  z-index: -1;
+}
+
+/* Aktifkan layer saat glitch */
+.glitch-text.glitching::before {
+  opacity: 0.8;
+  animation: glitchLayer1 0.3s ease-in-out;
+}
+
+.glitch-text.glitching::after {
+  opacity: 0.8;
+  animation: glitchLayer2 0.3s ease-in-out;
+}
+
+@keyframes glitchLayer1 {
+  0% { transform: translate(0); }
+  20% { transform: translate(-3px, 2px); }
+  40% { transform: translate(2px, -1px); }
+  60% { transform: translate(-1px, 3px); }
+  80% { transform: translate(3px, -2px); }
+  100% { transform: translate(0); }
+}
+
+@keyframes glitchLayer2 {
+  0% { transform: translate(0); }
+  20% { transform: translate(3px, -2px); }
+  40% { transform: translate(-2px, 1px); }
+  60% { transform: translate(1px, -3px); }
+  80% { transform: translate(-3px, 2px); }
+  100% { transform: translate(0); }
+}

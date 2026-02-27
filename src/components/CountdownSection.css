@@ -1,0 +1,77 @@
+/* ============================================
+   CountdownSection Styles
+   ============================================ */
+.section-countdown {
+  position: relative;
+  background: rgba(255, 0, 170, 0.04);
+}
+
+/* Background PNG overlay */
+.countdown-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url(/assets/countdown-bg.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.section-countdown .container {
+  position: relative;
+  z-index: 1;
+}
+
+.countdown-label {
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  margin-bottom: 1.5rem;
+}
+
+.countdown-boxes {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+/* Individual countdown box */
+.countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 80px;
+  padding: 1rem 1.25rem;
+  background: rgba(10, 10, 18, 0.8);
+  border: 2px solid var(--neon-magenta);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255, 0, 170, 0.2);
+  transition: box-shadow 0.3s ease;
+  perspective: 300px;
+}
+
+.countdown-num {
+  font-family: var(--font-pixel);
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  color: var(--neon-magenta);
+  text-shadow: 0 0 12px rgba(255, 0, 170, 0.5);
+  display: inline-block;
+}
+
+.countdown-unit {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  margin-top: 0.35rem;
+}
+
+.countdown-date {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}

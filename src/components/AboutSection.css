@@ -1,0 +1,53 @@
+/* ============================================
+   AboutSection Styles
+   ============================================ */
+.section-about {
+  background: linear-gradient(180deg, transparent, rgba(13, 13, 26, 0.6), transparent);
+}
+
+.about-content {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+  padding: 1.5rem;
+  overflow: visible;
+}
+
+.about-text {
+  font-size: 1.3rem;
+  color: var(--text-dim);
+  margin: 0;
+  line-height: 1.8;
+}
+
+.about-text strong {
+  color: var(--neon-cyan);
+}
+
+.about-visual {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  overflow: visible;
+}
+
+/* Logo event frame — pixel-rendered */
+.pixel-frame {
+  width: 440px;
+  max-width: calc(100% - 4rem);
+  height: 320px;
+  image-rendering: pixelated;
+  background: url(/assets/LogoEvent.png) no-repeat center center / contain;
+  filter: drop-shadow(0 0 10px rgba(0, 245, 255, 0.2));
+
+  border-radius: 12px;
+  transition: filter 0.3s ease;
+}
+
+.about-visual:hover .pixel-frame {
+  filter: drop-shadow(0 0 45px rgba(0, 245, 255, 0.5));
+}
+
+.about-content-inner {
+  width: 100%;
+}

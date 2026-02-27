@@ -1,0 +1,401 @@
+/* ============================================
+   CompetitionCard Styles
+   
+   SHAPE: Kotak lurus (rectangular), TANPA trapezoid
+   Border tebal HANYA atas & bawah (cyan)
+   Ukuran SEMUA card uniform — dikunci fixed
+   ============================================ */
+
+/* --- Wrapper: card + tombol reveal --- */
+.comp-card-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Ruang bawah untuk tombol reveal */
+  padding-bottom: 65px;
+  /* Kunci lebar agar semua card sama */
+  width: 100%;
+  max-width: 300px;
+}
+
+/* === BOX UTAMA — fixed width === */
+.comp-card {
+  position: relative;
+  /* KUNCI LEBAR: semua card sama persis */
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+  filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.4));
+  transition: filter 0.35s ease;
+}
+
+/* Hover: glow shadow */
+.comp-card-wrapper:hover .comp-card {
+  filter:
+    drop-shadow(0 12px 35px rgba(0, 245, 255, 0.3))
+    drop-shadow(0 6px 20px rgba(0, 0, 0, 0.5));
+}
+
+/* --- Border Atas: bar tebal cyan --- */
+.comp-card-border-top {
+  width: 100%;
+  height: 7px;
+  background: var(--neon-cyan);
+  border-radius: 6px 6px 0 0;
+  position: relative;
+  z-index: 3;
+  transition: box-shadow 0.4s ease, background 0.4s ease;
+}
+
+/* --- Border Bawah: bar tebal cyan --- */
+.comp-card-border-bottom {
+  width: 100%;
+  height: 7px;
+  background: var(--neon-cyan);
+  border-radius: 0 0 6px 6px;
+  position: relative;
+  z-index: 3;
+  transition: box-shadow 0.4s ease, background 0.4s ease;
+}
+
+/* Glow shimmer saat hover */
+.comp-card-border-top.glow,
+.comp-card-border-bottom.glow {
+  box-shadow:
+    0 0 20px rgba(0, 245, 255, 0.6),
+    0 0 40px rgba(0, 245, 255, 0.3),
+    0 0 60px rgba(0, 245, 255, 0.15);
+  background: linear-gradient(
+    90deg,
+    var(--neon-cyan),
+    rgba(0, 245, 255, 0.7),
+    var(--neon-cyan)
+  );
+  animation: borderGlowShimmer 2s ease-in-out infinite;
+}
+
+@keyframes borderGlowShimmer {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.6),
+      0 0 40px rgba(0, 245, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(0, 245, 255, 0.8),
+      0 0 60px rgba(0, 245, 255, 0.4),
+      0 0 80px rgba(0, 245, 255, 0.2);
+  }
+}
+
+/* --- Body: KOTAK LURUS, tanpa clip-path --- */
+.comp-card-body {
+  /* KUNCI: lebar 100% dari parent (300px) */
+  width: 100%;
+  background: #2d3748;
+  /* TANPA clip-path — kotak lurus */
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  z-index: 2;
+  /* Border kiri-kanan tipis sebagai frame */
+  border-left: 2px solid rgba(0, 245, 255, 0.15);
+  border-right: 2px solid rgba(0, 245, 255, 0.15);
+}
+
+/* --- Poster: A4 aspect ratio, FIXED HEIGHT --- */
+.comp-card-poster {
+  width: 100%;
+  /* KUNCI: tinggi fixed agar semua card sama */
+  aspect-ratio: 210 / 297;
+  background: #ffffff;
+  border-radius: 3px;
+  overflow: hidden;
+  border: 2px solid rgba(45, 55, 72, 0.6);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.08);
+}
+
+.comp-card-poster-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+
+/* Placeholder jika gambar belum ada */
+.comp-card-poster-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  color: #999;
+  text-align: center;
+  padding: 1rem;
+  background: #f0f0f0;
+}
+
+/* --- Footer: nama + jenjang (kiri) | status box (kanan) --- */
+.comp-card-footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 4px 0 0;
+  /* KUNCI: tinggi minimal agar footer konsisten */
+  min-height: 44px;
+}
+
+/* Nama lomba + jenjang */
+.comp-card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.comp-card-name {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1.2;
+  margin: 0 0 2px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.comp-card-level {
+  font-family: var(--font-display);
+  font-size: 0.55rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+  letter-spacing: 0.06em;
+  line-height: 1.3;
+}
+
+/* --- Status box kecil (kanan) --- */
+.comp-card-status-box {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px;
+  background: rgba(10, 10, 20, 0.75);
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  border-left: none;
+  border-right: none;
+  border-radius: 3px;
+  min-width: 62px;
+  gap: 1px;
+}
+
+.comp-card-status-label {
+  font-family: var(--font-pixel);
+  font-size: 0.35rem;
+  letter-spacing: 0.12em;
+  opacity: 0.8;
+  line-height: 1;
+}
+
+.comp-card-status-value {
+  font-family: var(--font-display);
+  font-size: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
+/* ============================================
+   Scanline overlay pada card (cyberpunk)
+   ============================================ */
+.comp-card-scanline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 4;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 245, 255, 0.015) 2px,
+    rgba(0, 245, 255, 0.015) 4px
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.comp-card-scanline.active {
+  opacity: 1;
+}
+
+/* ============================================
+   Tombol Reveal — GUIDE BOOK & REGISTER
+   ============================================ */
+.comp-card-buttons {
+  position: absolute;
+  /* sedikit jarak di bawah card utama */
+  bottom: -10px;
+  /* center horizontally regardless of wrapper width */
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  display: flex;
+  gap: 8px;
+  z-index: 1;
+  /* lebar mengikuti card, tapi berhenti di max-width */
+  width: 100%;
+  max-width: 300px;
+  justify-content: center;
+  padding: 0 4px;
+  transform-origin: top center;
+}
+
+/* Tombol individual */
+.comp-card-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 12px;
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--neon-cyan);
+  background: rgba(20, 30, 50, 0.92);
+  border-top: 2px solid var(--neon-cyan);
+  border-bottom: 2px solid var(--neon-cyan);
+  border-left: none;
+  border-right: none;
+  border-radius: 4px;
+  box-shadow: 0 0 12px rgba(0, 245, 255, 0.12);
+  transition: box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.comp-card-btn:hover {
+  box-shadow: 0 0 25px rgba(0, 245, 255, 0.45),
+    0 0 50px rgba(0, 245, 255, 0.15);
+  background: rgba(0, 245, 255, 0.12);
+}
+
+/* Register — warna magenta */
+.comp-card-btn-register {
+  color: var(--neon-magenta);
+  border-top-color: var(--neon-magenta);
+  border-bottom-color: var(--neon-magenta);
+  box-shadow: 0 0 12px rgba(255, 0, 170, 0.12);
+}
+
+.comp-card-btn-register:hover {
+  box-shadow: 0 0 25px rgba(255, 0, 170, 0.45),
+    0 0 50px rgba(255, 0, 170, 0.15);
+  background: rgba(255, 0, 170, 0.12);
+}
+
+/* Glitch text pada tombol */
+.comp-card-btn-text {
+  position: relative;
+  display: inline-block;
+}
+
+.comp-card-btn-text::before,
+.comp-card-btn-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.comp-card-btn-text::before {
+  color: var(--neon-cyan);
+  z-index: -1;
+}
+
+.comp-card-btn-text::after {
+  color: var(--neon-magenta);
+  z-index: -1;
+}
+
+.comp-card-btn:hover .comp-card-btn-text::before {
+  opacity: 0.7;
+  animation: btnGlitch1 0.4s ease-in-out;
+}
+
+.comp-card-btn:hover .comp-card-btn-text::after {
+  opacity: 0.7;
+  animation: btnGlitch2 0.4s ease-in-out;
+}
+
+@keyframes btnGlitch1 {
+  0% { transform: translate(0); opacity: 0; }
+  20% { transform: translate(-3px, 1px); opacity: 0.8; }
+  40% { transform: translate(2px, -1px); opacity: 0.6; }
+  60% { transform: translate(-1px, 2px); opacity: 0.7; }
+  80% { transform: translate(1px, -1px); opacity: 0.4; }
+  100% { transform: translate(0); opacity: 0; }
+}
+
+@keyframes btnGlitch2 {
+  0% { transform: translate(0); opacity: 0; }
+  20% { transform: translate(2px, -1px); opacity: 0.7; }
+  40% { transform: translate(-2px, 1px); opacity: 0.5; }
+  60% { transform: translate(1px, -2px); opacity: 0.8; }
+  80% { transform: translate(-1px, 1px); opacity: 0.3; }
+  100% { transform: translate(0); opacity: 0; }
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .comp-card-wrapper {
+    max-width: 280px;
+  }
+  .comp-card {
+    width: 280px;
+  }
+  .comp-card-buttons {
+    width: 280px;
+  }
+  .comp-card-name {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .comp-card-wrapper {
+    max-width: 260px;
+  }
+  .comp-card {
+    width: 260px;
+  }
+  .comp-card-buttons {
+    width: 260px;
+    gap: 6px;
+  }
+  .comp-card-btn {
+    font-size: 0.6rem;
+    padding: 8px 10px;
+  }
+}

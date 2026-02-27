@@ -1,0 +1,17 @@
+/* ============================================
+   TextScatter Styles
+   ============================================ */
+.text-scatter {
+  display: inline-block;
+  cursor: default;
+}
+
+.scatter-letter {
+  display: inline-block;
+  will-change: transform;
+}
+
+.scatter.obitron {
+    bottom: auto;
+    
+}
