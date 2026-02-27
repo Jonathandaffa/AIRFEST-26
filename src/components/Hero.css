@@ -93,3 +93,53 @@
   color: var(--neon-magenta);
   letter-spacing: 0.2em;
 }
+
+/* ============================================
+   Mobile Responsive — Hero Section
+   Sembunyikan gambar kiri/kanan, tampil mascot tengah
+   Kurangi spacing navbar ke hero
+   ============================================ */
+@media (max-width: 768px) {
+  .hero {
+    min-height: auto;
+    padding-top: 7rem;
+  }
+
+  /* Grid jadi 1 kolom, hanya tampil mascot tengah */
+  .hero-mascots {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding: 0.5rem 1rem;
+  }
+
+  /* Sembunyikan mascot kiri dan kanan */
+  .hero-mascot-left,
+  .hero-mascot-right {
+    display: none;
+  }
+
+  /* Center mascot — lebih kecil untuk mobile */
+  .hero-mascot-center {
+    min-height: auto;
+  }
+
+  .hero-mascot-img {
+    max-height: 35vh;
+    min-height: 80px;
+  }
+
+  /* Flyover text — adjust spacing */
+  .hero-flyover {
+    margin-top: 0rem;
+    padding: 0.75rem 1rem 1.5rem;
+  }
+
+  .hero-title {
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    margin-bottom: 0.3rem;
+  }
+
+  .hero-sub {
+    font-size: 0.75rem;
+  }
+}

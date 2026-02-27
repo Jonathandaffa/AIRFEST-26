@@ -2,8 +2,9 @@
    Navbar — Floating navigation bar
    Hide on scroll down, show on scroll up
    Logo AIRFEST + nav links + button pendaftaran
+   Hamburger menu untuk mobile
    ============================================ */
-import React from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
 import useScrollDirection from '../hooks/useScrollDirection';
@@ -14,6 +15,7 @@ import './Navbar.css';
 export default function Navbar() {
   const { direction, scrollY } = useScrollDirection();
   const isVisible = direction === 'up' || scrollY <= 60;
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <AnimatePresence>
@@ -32,7 +34,19 @@ export default function Navbar() {
               <span className="logo-year">26</span>
             </a>
 
-            {/* Navigation links */}
+            {/* Hamburger button — hanya untuk mobile */}
+            <button
+              className="nav-hamburger"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle menu"
+              aria-expanded={isMenuOpen}
+            >
+              <span className="hamburger-line"></span>
+              <span className="hamburger-line"></span>
+              <span className="hamburger-line"></span>
+            </button>
+
+            {/* Navigation links — desktop */}
             <nav className="nav-links">
               <NavLink to="/" className={({isActive}) => isActive ? 'nav-active' : ''}>Beranda</NavLink>
               <NavLink to="/information" className={({isActive}) => isActive ? 'nav-active' : ''}>Informasi</NavLink>
@@ -45,6 +59,48 @@ export default function Navbar() {
                 </MagneticButton>
               </NavLink>
             </nav>
+
+            {/* Mobile menu dropdown */}
+            <AnimatePresence>
+              {isMenuOpen && (
+                <motion.div
+                  className="nav-mobile-menu"
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <NavLink 
+                    to="/" 
+                    className={({isActive}) => isActive ? 'nav-mobile-link nav-active' : 'nav-mobile-link'}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Beranda
+                  </NavLink>
+                  <NavLink 
+                    to="/information" 
+                    className={({isActive}) => isActive ? 'nav-mobile-link nav-active' : 'nav-mobile-link'}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Informasi
+                  </NavLink>
+                  <NavLink 
+                    to="/gallery" 
+                    className={({isActive}) => isActive ? 'nav-mobile-link nav-active' : 'nav-mobile-link'}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Galeri
+                  </NavLink>
+                  <NavLink 
+                    to="/registration" 
+                    className={({isActive}) => isActive ? 'nav-mobile-link nav-active nav-mobile-registration' : 'nav-mobile-link nav-mobile-registration'}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Pendaftaran
+                  </NavLink>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </motion.header>
       )}

@@ -377,6 +377,7 @@
   }
   .comp-card-buttons {
     width: 280px;
+    max-width: 280px;
   }
   .comp-card-name {
     font-size: 0.9rem;
@@ -392,6 +393,7 @@
   }
   .comp-card-buttons {
     width: 260px;
+    max-width: 260px;
     gap: 6px;
   }
   .comp-card-btn {

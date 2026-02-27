@@ -34,17 +34,33 @@ export default function CompetitionCard({
   registerUrl,
 }) {
   const [isHovered, setIsHovered] = useState(false);
+  const [isTapped, setIsTapped] = useState(false);
   const [imgError, setImgError] = useState(false);
 
   /* Warna status berdasarkan ONLINE / OFFLINE */
   const isOnline = status === 'ONLINE';
   const statusColor = isOnline ? 'var(--neon-cyan)' : 'var(--neon-magenta)';
 
+  /* Handle tap untuk mobile — toggle state */
+  const handleTap = () => {
+    setIsTapped(!isTapped);
+  };
+
+  /* Close pada click di luar (optional) */
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    /* hanya hide isTapped jika via desktop hover, bukan di mobile */
+    if (window.innerWidth > 580) {
+      setIsTapped(false);
+    }
+  };
+
   return (
     <div
       className="comp-card-wrapper"
       onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseLeave={handleMouseLeave}
+      onClick={handleTap}
     >
       {/* === BOX UTAMA === */}
       <motion.div
@@ -55,10 +71,10 @@ export default function CompetitionCard({
         transition={{ type: 'spring', stiffness: 260, damping: 20 }}
       >
         {/* Scanline overlay cyberpunk */}
-        <div className={`comp-card-scanline ${isHovered ? 'active' : ''}`} />
+        <div className={`comp-card-scanline ${isHovered || isTapped ? 'active' : ''}`} />
 
         {/* Border atas tebal */}
-        <div className={`comp-card-border-top ${isHovered ? 'glow' : ''}`} />
+        <div className={`comp-card-border-top ${isHovered || isTapped ? 'glow' : ''}`} />
 
         {/* Body — KOTAK LURUS, tanpa clip-path */}
         <div className="comp-card-body">
@@ -104,12 +120,12 @@ export default function CompetitionCard({
         </div>
 
         {/* Border bawah tebal */}
-        <div className={`comp-card-border-bottom ${isHovered ? 'glow' : ''}`} />
+        <div className={`comp-card-border-bottom ${isHovered || isTapped ? 'glow' : ''}`} />
       </motion.div>
 
       {/* === TOMBOL REVEAL === */}
       <AnimatePresence>
-        {isHovered && (
+        {(isHovered || isTapped) && (
           <motion.div
             className="comp-card-buttons"
             initial={{ opacity: 0, y: -20, scaleY: 0.5 }}

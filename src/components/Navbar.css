@@ -113,3 +113,127 @@
     padding: 0.4rem 0.9rem !important;
   }
 }
+
+/* ============================================
+   Mobile Hamburger Menu (tablet and below)
+   ============================================ */
+@media (max-width: 768px) {
+  /* Hide desktop nav-links */
+  .nav-links {
+    display: none;
+  }
+
+  /* Show hamburger button */
+  .nav-hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+  }
+
+  .hamburger-line {
+    width: 24px;
+    height: 2.5px;
+    background: var(--neon-cyan);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    display: block;
+  }
+
+  .nav-hamburger[aria-expanded="true"] .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+  }
+
+  .nav-hamburger[aria-expanded="true"] .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav-hamburger[aria-expanded="true"] .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(8px, -8px);
+  }
+
+  /* Mobile menu dropdown */
+  .nav-mobile-menu {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    right: 0;
+    background: rgba(10, 10, 18, 0.95);
+    border: 1px solid rgba(0, 245, 255, 0.2);
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 0.5rem;
+  }
+
+  .nav-mobile-link {
+    display: block;
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+    color: var(--text-dim);
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+  }
+
+  .nav-mobile-link:hover {
+    background: rgba(0, 245, 255, 0.1);
+    color: var(--neon-cyan);
+  }
+
+  .nav-mobile-link.nav-active {
+    background: rgba(0, 245, 255, 0.15);
+    color: var(--neon-cyan);
+    text-shadow: 0 0 12px rgba(0, 245, 255, 0.3);
+  }
+
+  /* Pendaftaran button dalam mobile menu */
+  .nav-mobile-registration {
+    background: linear-gradient(135deg, var(--neon-magenta), var(--neon-purple));
+    color: #fff !important;
+    border: 1px solid rgba(255, 0, 170, 0.4);
+    text-shadow: none !important;
+    margin-top: 0.5rem;
+  }
+
+  .nav-mobile-registration:hover {
+    box-shadow: 0 0 20px rgba(255, 0, 170, 0.4);
+  }
+
+  .nav-mobile-registration.nav-active {
+    box-shadow: 0 0 28px rgba(255, 0, 170, 0.6);
+  }
+}
+
+/* ============================================
+   Mobile landscape dan portrait cutoff
+   ============================================ */
+@media (max-width: 480px) {
+  .logo .logo-pixel {
+    font-size: 0.6rem;
+  }
+
+  .logo-year {
+    font-size: 0.9rem;
+  }
+
+  .nav-hamburger {
+    padding: 0.4rem;
+  }
+
+  .hamburger-line {
+    width: 20px;
+  }
+}
